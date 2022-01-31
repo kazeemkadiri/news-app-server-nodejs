@@ -38,14 +38,14 @@ mongoose
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(express.static(path.join(__dirname, "build")));
+app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
 
 // This line of code returns the index.html in build folder
 app.get('/', (req, res) => {
   console.log('In here');
-  res.sendFile(path.join(__dirname, 'build','index.html'));
+  res.sendFile(path.join(__dirname, 'public','index.html'));
   res.end();
 });
 
