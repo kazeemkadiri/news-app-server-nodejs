@@ -44,7 +44,8 @@ app.use(cors());
 
 // This line of code returns the index.html in build folder
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'build/index.html'));
+  res.sendFile(path.join(__dirname, 'build','index.html'));
+  res.end();
 });
 
 app.post("/login", async (req, res) => {
