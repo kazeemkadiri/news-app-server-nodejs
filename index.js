@@ -19,7 +19,7 @@ const {
 } = require("./lib/helpers");
 
 const { NODE_ENV } = process.env;
-const PORT = NODE_ENV == "production" ? 4000 : 3001;
+const PORT = NODE_ENV == "production" ? 5000 : 3001;
 
 const MONGODB_URL =
   NODE_ENV === "development"
@@ -354,4 +354,4 @@ app.post("/update-user-record", auth, async (req, res) => {
   });
 });
 
-app.listen(PORT, () => console.log(`Server is running on port ${PORT}`));
+app.listen(PORT || 5000, () => console.log(`Server is running on port ${PORT}`));
