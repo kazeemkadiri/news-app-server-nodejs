@@ -19,7 +19,7 @@ const {
 } = require("./lib/helpers");
 
 const { NODE_ENV } = process.env;
-const PORT = NODE_ENV == "production" ? 5000 : 3001;
+const PORT = process.env.PORT || 5000;
 
 const MONGODB_URL =
   NODE_ENV === "development"
@@ -41,6 +41,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use(cors());
+
+app.use((req,res,next)=>{
+  console.log('Requested url', req.url);
+  next();
+});
 
 // This line of code returns the index.html in build folder
 app.get('/', (req, res) => {
